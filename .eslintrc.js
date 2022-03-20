@@ -12,6 +12,8 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 12,
+    sourceType: "module",
+    allowImportExportEverywhere: true,
   },
   overrides: [
     {
