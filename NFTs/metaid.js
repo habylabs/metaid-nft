@@ -1,12 +1,13 @@
 const contractName = "metaid"; // links to the file name in contracts/<filename.sol>
 
 const env = process.env.HARDHAT_NETWORK === "mainnet" ? "www" : "dev";
+const metaidApiUrl = `https://${env}.metaid.quest/api/v1/metaid/`;
 
 const nftName = "Meta ID";
 const symbol = "METAID";
-const metadataFolderURL = `https://${env}.metaid.quest/api/v1/metadata/`;
+const metadataFolderURL = metaidApiUrl;
 const mintsPerAddress = 1;
-const openseaContractMetadataURI = `https://${env}.metaid.quest/api/v1/contract-metadata`;
+const openseaContractMetadataURI = metaidApiUrl;
 const mintActive = false;
 
 // For a project to be added to this list, it must include the ownerOf function in its contract
