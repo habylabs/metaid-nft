@@ -1,11 +1,12 @@
 {
-  "name": "hardhat-project",
+  "name": "metaid-contracts",
+  "license": "MIT",
   "scripts": {
     "contracts:compile": "npx hardhat compile",
     "contracts:serve": "npx hardhat node",
-    "contracts:deploy-local": "npx hardhat run util/deploy.js --network localhost",
-    "contracts:deploy-rinkeby": "npx hardhat run util/deploy.js --network rinkeby",
-    "contracts:deploy-mainnet": "npx hardhat run util/deploy.js --network mainnet",
+    "contracts:deploy-local": "npx hardhat run scripts/deploy.mjs --network localhost",
+    "contracts:deploy-goerli": "npx hardhat run scripts/deploy.mjs --network goerli",
+    "contracts:deploy-mainnet": "npx hardhat run scripts/deploy.mjs --network mainnet",
     "contracts:flatten": "npx hardhat flatten contracts/character.sol"
   },
   "devDependencies": {

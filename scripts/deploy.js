@@ -1,33 +1,12 @@
 /* eslint-disable node/no-unsupported-features/es-syntax */
 // eslint-disable-next-line no-unused-vars
-import hre, { ethers, network, run } from "hardhat";
-import axios from "axios";
-import "@nomiclabs/hardhat-ethers";
-import { formatUnits, parseUnits } from "ethers/lib/utils";
-const [file] = process.argv.slice(2);
+const hre = require("hardhat");
+const axios = require("axios");
+require("@nomiclabs/hardhat-ethers");
 
-const maxGasPrice = "100";
+const { ethers, network, run } = hre;
 
-const getContractInfo = async (file) => await import(`../NFTs/${file}.js`);
-
-async function waitForGasPriceBelow(max) {
-  console.log("Waiting for gas price below", formatUnits(max, "gwei"), "gwei");
-  // eslint-disable-next-line no-constant-condition
-  while (true) {
-    const price = await ethers.provider.getGasPrice();
-    console.log(
-      new Date().toLocaleString(),
-      "Gas Price:",
-      formatUnits(price, "gwei"),
-      "gwei"
-    );
-    if (price.lte(max)) {
-      console.log("Good enough!");
-      return price;
-    }
-    await new Promise((resolve) => setTimeout(resolve, 30_000));
-  }
-}
+const getContractInfo = async () => await import(`../NFTs/metaId.js`);
 
 const sleep = (ms) => {
   console.log(`sleeping ${ms / 1000} seconds`);
@@ -54,21 +33,19 @@ const waitForEtherscan = async (address, network) => {
 };
 
 async function main() {
-  const { contractName, contractArgs } = await getContractInfo(file);
+  const { contractName, contractArgs } = await getContractInfo();
 
   console.log("contract name:", contractName);
   console.log("contract args:", contractArgs);
 
   await run("compile");
 
-  await waitForGasPriceBelow(parseUnits(maxGasPrice, "gwei"));
   const ERC721Factory = await ethers.getContractFactory(contractName);
   const contractInstance = await ERC721Factory.deploy(...contractArgs); // Instance of the contract
 
   console.log(
     `deploying contract: ${contractInstance.address} to the ${network.name} network...`
   );
-  // console.log(`using gas price of ${Number(network)/(10**9)} gwei`);
   await contractInstance.deployed();
   console.log("contract deployed");
 
