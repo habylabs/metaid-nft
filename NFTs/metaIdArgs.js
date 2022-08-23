@@ -1,7 +1,7 @@
 const metaidApiUrl =
   process.env.HARDHAT_NETWORK === "mainnet"
     ? "https://metaid.quest/api/v1/metaid/token/"
-    : "https://b104-136-58-120-30.ngrok.io/";
+    : "https://b104-136-58-120-30.ngrok.io/api/v1/metaid/token/";
 
 const nftName = "Meta ID";
 const symbol = "METAID";
