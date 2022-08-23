@@ -4,9 +4,9 @@
   "scripts": {
     "contracts:compile": "npx hardhat compile",
     "contracts:serve": "npx hardhat node",
-    "contracts:deploy-local": "npx hardhat run scripts/deploy.mjs --network localhost",
-    "contracts:deploy-goerli": "npx hardhat run scripts/deploy.mjs --network goerli",
-    "contracts:deploy-mainnet": "npx hardhat run scripts/deploy.mjs --network mainnet",
+    "contracts:deploy-local": "npx hardhat run scripts/deploy.js --network localhost",
+    "contracts:deploy-goerli": "npx hardhat run scripts/deploy.js --network goerli",
+    "contracts:deploy-mainnet": "npx hardhat run scripts/deploy.js --network mainnet",
     "contracts:flatten": "npx hardhat flatten contracts/character.sol"
   },
   "devDependencies": {

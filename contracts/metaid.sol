@@ -11,7 +11,7 @@ interface FreeMintProjectsInterface {
   function ownerOf(uint256 tokenId) external view returns (address owner);
 }
 
-contract metaId is ERC721, Ownable, ReentrancyGuard {
+contract MetaId is ERC721, Ownable, ReentrancyGuard {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
   string public metadataFolderURI;

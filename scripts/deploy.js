@@ -6,7 +6,7 @@ require("@nomiclabs/hardhat-ethers");
 
 const { ethers, network, run } = hre;
 
-const getContractInfo = async () => await import(`../NFTs/metaId.js`);
+const getContractInfo = async () => await import(`../NFTs/MetaId.js`);
 
 const sleep = (ms) => {
   console.log(`sleeping ${ms / 1000} seconds`);
